@@ -16,6 +16,7 @@
 ## Overview
 This project demonstrates an Extract, Transform, Load (ETL) process of sales data using Python, scheduled to run periodically `everyday at 08.00` using a scheduler script, and containerized with Docker for local execution. The ETL process involves extracting data from multiple sources, transforming it, and loading it into a data mart.
 
+
 ## Data Sources
 ### Store
 Schema: StoreId, StoreName, Location
@@ -32,7 +33,8 @@ Containing the total sales made by each cashier in each store.
 Old sales data, stored in .parquet format in the `sales_data` directory.
 Then there is new sales data in the `new_sales_data` directory.
 
-# Output Data
+
+## Output Data
 The output data are several datamarts located in solution/etlapp/data/output in csv format.
 List of datamarts :
 1. sales_by_cashier
@@ -40,6 +42,7 @@ List of datamarts :
 3. sales_by_month
 4. sales_by_store
 5. sales_by_store_cashier
+
 
 ## ETL Process Explanation
 ### ETL Script (ETL.py)
@@ -55,6 +58,7 @@ The ETL script performs the following tasks:
                 (3) Datamart created from the joined table by adding aggregate columns for each datamart. 
 
 *Loading*: Loads the transformed data into specific folder in csv format.
+
 
 ## Folder Structure
 .
@@ -138,27 +142,29 @@ The ETL script performs the following tasks:
             ETL.py
             scheduler.py
 
+
 ## Prerequisites
 Docker
 Docker Compose
 
+
 ## Setup tutorial
-### Step 1: Go to your preferred path to store the app /cmd
+*Step 1*: Go to your preferred path to store the app /cmd
 cd <your_folder_path>
 
-### Step 2: Clone the repository in sh / cmd
+*Step 2*: Clone the repository in sh / cmd
 git clone -b master https://github.com/nabilaedelliana/etl-sales-data.git
 
-### Step 3: Go to the app path /cmd
+*Step 3*: Go to the app path /cmd
 cd etl-sales-data
 
-### Step 4: Build the Docker image / cmd
+*Step 4*: Build the Docker image / cmd
 docker build -t etl-app .
 
-### Step 5: Run Docker in detached mode to keep it running at the background / cmd
+*Step 5*: Run Docker in detached mode to keep it running at the background / cmd
 docker run -d -v "%cd%/data:/data" etl-app
 
-### Step 6: Check if the output is exist in csv format after running the app / file explorer
+*Step 6*: Check if the output is exist in csv format after running the app / file explorer
 Go to <your_folder_path>/etl-sales-data/etlapp/data/output
 
 
@@ -166,6 +172,9 @@ Go to <your_folder_path>/etl-sales-data/etlapp/data/output
 ## File list
 ### Scheduler Script (scheduler.py)
 The scheduler script ensures the ETL process runs periodically everyday at 08.00 (timezone : Asia, Jakarta). It uses the schedule library for the ETL job.
+
+### ETL Script (ETL.py)
+This script consist of end-to-end ETL processing.
 
 ### Dockerfile
 The Dockerfile sets up the environment for running the ETL process. It installs necessary dependencies and copies the scripts into the Docker image.
@@ -178,6 +187,7 @@ Logs are stored in the logs/etl.log file. You can check the logs to monitor the 
 
 ### Data
 The data is stored in the etlapp/data directory and consists of various input files and the output data mart.
+
 
 ## Conclusion
 This ETL project demonstrates a complete pipeline for extracting, transforming, and loading data using Python, scheduled with a scheduler script, and containerized using Docker. Follow the setup steps to get the ETL process running on your local machine.
