@@ -26,25 +26,25 @@ import os
 import schedule
 import time
 
-# Make sure the logs directory exists
+# Pastikan direktori logs sudah ada
 if not os.path.exists('logs'):
     os.makedirs('logs')
 
-logging.basicConfig(filename='logs/scheduler.log', level=logging.INFO)
+# Configure logging to console and file
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
+    logging.FileHandler('logs/scheduler.log'),
+    logging.StreamHandler()  # Add this line
+])
 
 def job():
-    logging.info("Starting ETL job...")
     try:
-        # Define the path to the ETL script
-        etl_script_path = os.path.join('etlapp', 'scripts', 'ETL.py')
-        # Run the ETL script
-        os.system(f'python {etl_script_path}')
-        logging.info("ETL job completed successfully.")
+        logging.info("Starting ETL job...")
+        os.system('python etlapp/scripts/ETL.py')
     except Exception as e:
-        logging.error(f"ETL job failed: {e}")
+        logging.error(f"Error running ETL job: {e}")
 
-# Schedule the ETL to run every day at a specified time
-schedule.every().day.at("00:25").do(job)
+# Scheduler untuk menjalankan ETL setiap hari
+schedule.every().day.at("00:38").do(job)
 
 while True:
     schedule.run_pending()
