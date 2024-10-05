@@ -145,6 +145,7 @@ The ETL script performs the following tasks:
 
 ## Prerequisites
 Docker
+
 Docker Compose
 
 
