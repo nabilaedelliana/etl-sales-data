@@ -1,0 +1,106 @@
+2024-10-05 22:21:56,439 - root - INFO - Starting data extraction...
+2024-10-05 22:21:56,576 - root - INFO - Found 9 parquet files
+2024-10-05 22:21:56,699 - root - INFO - Loaded 111332 records from /app/data/sales_data/Year=2024/Month=1/Day=27/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:56,750 - root - INFO - Loaded 111525 records from /app/data/sales_data/Year=2024/Month=1/Day=28/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:56,814 - root - INFO - Loaded 110984 records from /app/data/sales_data/Year=2024/Month=1/Day=29/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:56,874 - root - INFO - Loaded 111183 records from /app/data/sales_data/Year=2024/Month=1/Day=30/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:56,961 - root - INFO - Loaded 110942 records from /app/data/sales_data/Year=2024/Month=1/Day=31/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:57,053 - root - INFO - Loaded 110943 records from /app/data/sales_data/Year=2024/Month=2/Day=1/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:57,179 - root - INFO - Loaded 110923 records from /app/data/sales_data/Year=2024/Month=2/Day=2/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:57,297 - root - INFO - Loaded 111252 records from /app/data/sales_data/Year=2024/Month=2/Day=3/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:57,405 - root - INFO - Loaded 110916 records from /app/data/sales_data/Year=2024/Month=2/Day=4/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:21:57,579 - root - INFO - Found 3 CSV files
+2024-10-05 22:21:57,581 - root - INFO - Processing file: /app/data/new_sales_data/sales_data_2024-02_05.csv
+2024-10-05 22:21:59,104 - root - INFO - Loaded 800000 records from /app/data/new_sales_data/sales_data_2024-02_05.csv
+2024-10-05 22:21:59,104 - root - INFO - Processing file: /app/data/new_sales_data/sales_data_2024-02_06.csv
+2024-10-05 22:21:59,685 - root - INFO - Loaded 750000 records from /app/data/new_sales_data/sales_data_2024-02_06.csv
+2024-10-05 22:21:59,687 - root - INFO - Processing file: /app/data/new_sales_data/sales_data_2024-02_07.csv
+2024-10-05 22:22:00,424 - root - INFO - Loaded 850000 records from /app/data/new_sales_data/sales_data_2024-02_07.csv
+2024-10-05 22:22:00,555 - root - INFO - CSV DataFrame head:    SaleID  StoreID  CashierId  Amount  Year Month Day
+0       1        1        103     143  2024    02  05
+1       2        2        104     291  2024    02  05
+2       3        1        101     113  2024    02  05
+3       4        1        104     643  2024    02  05
+4       5        3        101     851  2024    02  05
+2024-10-05 22:22:01,215 - root - INFO - Found 1 store files
+2024-10-05 22:22:01,477 - root - INFO - Successfully loaded 7 records from store files
+2024-10-05 22:22:01,477 - root - INFO - Extracting cashier data from path: /app/data/cashier_data/*.json
+2024-10-05 22:22:01,485 - root - INFO - Files found: ['/app/data/cashier_data/cashier_data20240101023456.json', '/app/data/cashier_data/cashier_data20240102025110.json', '/app/data/cashier_data/cashier_data20240102035221.json', '/app/data/cashier_data/cashier_data20240105031331.json', '/app/data/cashier_data/cashier_data20240107015214.json', '/app/data/cashier_data/cashier_data20240108051442.json', '/app/data/cashier_data/cashier_data20240201035144.json', '/app/data/cashier_data/cashier_data20240201051442.json']
+2024-10-05 22:22:01,563 - root - INFO - Extracted cashier DataFrame columns: ['CashierId', 'Name', 'Email', 'Level']
+2024-10-05 22:22:01,573 - root - INFO - First few rows of cashier DataFrame:
+   CashierId           Name              Email         Level
+0        101       John Doe   john@example.com         Staff
+1        102     Jane Smith   jane@example.com  Senior Staff
+2        103  Alice Johnson  alice@example.com         Staff
+3        102            NaN                NaN    Supervisor
+4        104   Anna Willson   anna@example.com         Staff
+2024-10-05 22:22:01,574 - root - INFO - Data extraction completed.
+2024-10-05 22:22:01,575 - root - INFO - Starting data transformation...
+2024-10-05 22:22:01,597 - root - INFO - Transformed cashier DataFrame columns: ['CashierId', 'Name', 'Email', 'Level']
+2024-10-05 22:22:01,605 - root - INFO - First few rows of transformed cashier DataFrame:
+   CashierId           Name              Email         Level
+0        101       John Doe   john@example.com         Staff
+1        102     Jane Smith   jane@example.com  Senior Staff
+2        103  Alice Johnson  alice@example.com         Staff
+4        104   Anna Willson   anna@example.com         Staff
+5        105     Betty Gore                NaN  Senior Staff
+2024-10-05 22:22:01,606 - root - INFO - Sales DataFrame columns: ['SaleID', 'StoreID', 'CashierId', 'Amount', 'Year', 'Month', 'Day']
+2024-10-05 22:22:01,607 - root - INFO - Store DataFrame columns: ['StoreID', 'StoreName', 'Location']
+2024-10-05 22:22:01,608 - root - INFO - Cashier DataFrame columns: ['CashierId', 'Name', 'Email', 'Level']
+2024-10-05 22:22:08,753 - root - INFO - Data transformation completed.
+2024-10-05 22:22:08,753 - root - INFO - Starting data loading...
+2024-10-05 22:22:08,835 - root - INFO - Data saved to /app/data/output
+2024-10-05 22:22:08,835 - root - INFO - Data loading completed and exist in /app/data/output.
+2024-10-05 22:41:43,959 - root - INFO - Starting data extraction...
+2024-10-05 22:41:44,190 - root - INFO - Found 9 parquet files
+2024-10-05 22:41:44,673 - root - INFO - Loaded 111332 records from /app/data/sales_data/Year=2024/Month=1/Day=27/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:44,775 - root - INFO - Loaded 111525 records from /app/data/sales_data/Year=2024/Month=1/Day=28/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:44,869 - root - INFO - Loaded 110984 records from /app/data/sales_data/Year=2024/Month=1/Day=29/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:44,976 - root - INFO - Loaded 111183 records from /app/data/sales_data/Year=2024/Month=1/Day=30/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:45,070 - root - INFO - Loaded 110942 records from /app/data/sales_data/Year=2024/Month=1/Day=31/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:45,166 - root - INFO - Loaded 110943 records from /app/data/sales_data/Year=2024/Month=2/Day=1/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:45,264 - root - INFO - Loaded 110923 records from /app/data/sales_data/Year=2024/Month=2/Day=2/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:45,389 - root - INFO - Loaded 111252 records from /app/data/sales_data/Year=2024/Month=2/Day=3/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:45,514 - root - INFO - Loaded 110916 records from /app/data/sales_data/Year=2024/Month=2/Day=4/9bd979fed625436f93f12c3a34c3e2c4-0.parquet
+2024-10-05 22:41:45,698 - root - INFO - Found 3 CSV files
+2024-10-05 22:41:45,699 - root - INFO - Processing file: /app/data/new_sales_data/sales_data_2024-02_05.csv
+2024-10-05 22:41:47,130 - root - INFO - Loaded 800000 records from /app/data/new_sales_data/sales_data_2024-02_05.csv
+2024-10-05 22:41:47,131 - root - INFO - Processing file: /app/data/new_sales_data/sales_data_2024-02_06.csv
+2024-10-05 22:41:48,001 - root - INFO - Loaded 750000 records from /app/data/new_sales_data/sales_data_2024-02_06.csv
+2024-10-05 22:41:48,002 - root - INFO - Processing file: /app/data/new_sales_data/sales_data_2024-02_07.csv
+2024-10-05 22:41:49,670 - root - INFO - Loaded 850000 records from /app/data/new_sales_data/sales_data_2024-02_07.csv
+2024-10-05 22:41:50,146 - root - INFO - CSV DataFrame head:    SaleID  StoreID  CashierId  Amount  Year Month Day
+0       1        1        103     143  2024    02  05
+1       2        2        104     291  2024    02  05
+2       3        1        101     113  2024    02  05
+3       4        1        104     643  2024    02  05
+4       5        3        101     851  2024    02  05
+2024-10-05 22:41:51,089 - root - INFO - Found 1 store files
+2024-10-05 22:41:51,807 - root - INFO - Successfully loaded 7 records from store files
+2024-10-05 22:41:51,807 - root - INFO - Extracting cashier data from path: /app/data/cashier_data/*.json
+2024-10-05 22:41:51,816 - root - INFO - Files found: ['/app/data/cashier_data/cashier_data20240101023456.json', '/app/data/cashier_data/cashier_data20240102025110.json', '/app/data/cashier_data/cashier_data20240102035221.json', '/app/data/cashier_data/cashier_data20240105031331.json', '/app/data/cashier_data/cashier_data20240107015214.json', '/app/data/cashier_data/cashier_data20240108051442.json', '/app/data/cashier_data/cashier_data20240201035144.json', '/app/data/cashier_data/cashier_data20240201051442.json']
+2024-10-05 22:41:51,882 - root - INFO - Extracted cashier DataFrame columns: ['CashierId', 'Name', 'Email', 'Level']
+2024-10-05 22:41:51,908 - root - INFO - First few rows of cashier DataFrame:
+   CashierId           Name              Email         Level
+0        101       John Doe   john@example.com         Staff
+1        102     Jane Smith   jane@example.com  Senior Staff
+2        103  Alice Johnson  alice@example.com         Staff
+3        102            NaN                NaN    Supervisor
+4        104   Anna Willson   anna@example.com         Staff
+2024-10-05 22:41:51,909 - root - INFO - Data extraction completed.
+2024-10-05 22:41:51,910 - root - INFO - Starting data transformation...
+2024-10-05 22:41:51,967 - root - INFO - Transformed cashier DataFrame columns: ['CashierId', 'Name', 'Email', 'Level']
+2024-10-05 22:41:51,989 - root - INFO - First few rows of transformed cashier DataFrame:
+   CashierId           Name              Email         Level
+0        101       John Doe   john@example.com         Staff
+1        102     Jane Smith   jane@example.com  Senior Staff
+2        103  Alice Johnson  alice@example.com         Staff
+4        104   Anna Willson   anna@example.com         Staff
+5        105     Betty Gore                NaN  Senior Staff
+2024-10-05 22:41:51,990 - root - INFO - Sales DataFrame columns: ['SaleID', 'StoreID', 'CashierId', 'Amount', 'Year', 'Month', 'Day']
+2024-10-05 22:41:51,990 - root - INFO - Store DataFrame columns: ['StoreID', 'StoreName', 'Location']
+2024-10-05 22:41:51,991 - root - INFO - Cashier DataFrame columns: ['CashierId', 'Name', 'Email', 'Level']
+2024-10-05 22:41:58,361 - root - INFO - Data transformation completed.
+2024-10-05 22:41:58,362 - root - INFO - Starting data loading...
+2024-10-05 22:41:58,453 - root - INFO - Data saved to /app/data/output
+2024-10-05 22:41:58,454 - root - INFO - Data loading completed and exist in /app/data/output.

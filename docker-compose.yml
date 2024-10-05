@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  etl:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/data
+      - ./etlapp:/app
+      - ./etlapp/logs:/logs
+    environment:
+      - DATA_DIR=/app/data
+      - LOG_DIR=/logs
+    working_dir: /app

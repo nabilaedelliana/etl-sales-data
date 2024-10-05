@@ -1,0 +1,13 @@
+StoreID,StoreName,CashierId,Name,TotalSales
+1,Store A,101,John Doe,155503142
+1,Store A,102,Jane Smith,156105529
+1,Store A,103,Alice Johnson,154929894
+1,Store A,104,Anna Willson,155715419
+2,Store B,101,John Doe,155591874
+2,Store B,102,Jane Smith,156003252
+2,Store B,103,Alice Johnson,155526408
+2,Store B,104,Anna Willson,155744197
+3,Store C,101,John Doe,155687021
+3,Store C,102,Jane Smith,155717921
+3,Store C,103,Alice Johnson,155590222
+3,Store C,104,Anna Willson,155858825
