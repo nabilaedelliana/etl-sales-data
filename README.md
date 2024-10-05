@@ -1,6 +1,31 @@
 # ETL Project with Scheduler and Docker
 ## Overview
-This project demonstrates an Extract, Transform, Load (ETL) process using Python, scheduled to run periodically using a scheduler script, and containerized with Docker for local execution. The ETL process involves extracting data from multiple sources, transforming it, and loading it into a data mart.
+This project demonstrates an Extract, Transform, Load (ETL) process of sales data using Python, scheduled to run periodically `everyday at 23.45` using a scheduler script, and containerized with Docker for local execution. The ETL process involves extracting data from multiple sources, transforming it, and loading it into a data mart.
+
+## Data Sources
+### Store
+Schema: StoreId, StoreName, Location
+Save as .xslx file
+
+### Cashier
+Schema: CashierId, Name, Email, Level
+You are given the event logs of this tables in the respective directory name under `cashier_data` directory.
+Logs can be new data or updates, logs are sorted by timestamp (yyyymmddhhmmss). The key used is CashierId.
+
+### Sales
+Schema: SaleID, StoreID, CashierId, Amount
+Containing the total sales made by each cashier in each store.
+Old sales data, stored in .parquet format in the `sales_data` directory.
+Then there is new sales data in the `new_sales_data` directory.
+
+# Output Data
+The output data are several datamarts located in solution/etlapp/data/output in csv format.
+List of datamarts :
+1. sales_by_cashier
+2. sales_by_day
+3. sales_by_month
+4. sales_by_store
+5. sales_by_store_cashier
 
 ## Folder Structure
 .
@@ -90,8 +115,8 @@ Docker Compose
 
 ## Setup
 ### Step 1: Clone the repository in sh / cmd
-git clone <repository-url>
-cd <repository-directory>
+git clone [git@github.com:nabilaedelliana/etl-sales-data.git](git@github.com:nabilaedelliana/etl-sales-data.git)
+cd [etl-sales-data](https://github.com/nabilaedelliana/etl-sales-data/tree/master)
 ### Step 2: Build the Docker image / cmd
 docker build -t etlapp:latest .
 ### Step 3: Run Docker Compose / cmd
