@@ -116,6 +116,7 @@ Docker Compose
 ## Setup
 ### Step 1: Clone the repository in sh / cmd
 git clone [git@github.com:nabilaedelliana/etl-sales-data.git](git@github.com:nabilaedelliana/etl-sales-data.git)
+
 cd [etl-sales-data](https://github.com/nabilaedelliana/etl-sales-data/tree/master)
 ### Step 2: Build the Docker image / cmd
 docker build -t etlapp:latest .
