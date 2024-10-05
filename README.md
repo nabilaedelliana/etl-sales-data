@@ -1,7 +1,7 @@
 # ETL Project with Scheduler and Docker
 # candidate : Nabila Edelliana Khairunnisa
 ## Overview
-This project demonstrates an Extract, Transform, Load (ETL) process of sales data using Python, scheduled to run periodically `everyday at 01.15` using a scheduler script, and containerized with Docker for local execution. The ETL process involves extracting data from multiple sources, transforming it, and loading it into a data mart.
+This project demonstrates an Extract, Transform, Load (ETL) process of sales data using Python, scheduled to run periodically `everyday at 08.00` using a scheduler script, and containerized with Docker for local execution. The ETL process involves extracting data from multiple sources, transforming it, and loading it into a data mart.
 
 ## Data Sources
 ### Store

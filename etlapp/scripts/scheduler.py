@@ -1,32 +1,9 @@
-#import logging
-#import os
-#import schedule
-#import time
-
-# Pastikan direktori logs sudah ada
-#if not os.path.exists('logs'):
-#    os.makedirs('logs')
-
-#logging.basicConfig(filename='logs/scheduler.log', level=logging.INFO)
-
-#def job():
-#    logging.info("Starting ETL job...")
-#    os.system('python scripts/ETL.py')
-
-# Scheduler untuk menjalankan ETL setiap hari
-#schedule.every().day.at("22:43").do(job)
-
-#while True:
-#    schedule.run_pending()
-#    time.sleep(1)
-
-
 import logging
 import os
 import schedule
 import time
 
-# Pastikan direktori logs sudah ada
+# Ensure dlogs directory is exist
 if not os.path.exists('logs'):
     os.makedirs('logs')
 
@@ -43,8 +20,8 @@ def job():
     except Exception as e:
         logging.error(f"Error running ETL job: {e}")
 
-# Scheduler untuk menjalankan ETL setiap hari
-schedule.every().day.at("02:33").do(job)
+# Scheduler to run ETL everyday
+schedule.every().day.at("08:00").do(job)
 
 while True:
     schedule.run_pending()
