@@ -151,21 +151,27 @@ Docker Compose
 
 ## Setup tutorial
 *Step 1*: Go to your preferred path to store the app /cmd
+
 cd <your_folder_path>
 
 *Step 2*: Clone the repository in sh / cmd
+
 git clone -b master https://github.com/nabilaedelliana/etl-sales-data.git
 
 *Step 3*: Go to the app path /cmd
+
 cd etl-sales-data
 
 *Step 4*: Build the Docker image / cmd
+
 docker build -t etl-app .
 
 *Step 5*: Run Docker in detached mode to keep it running at the background / cmd
+
 docker run -d -v "%cd%/data:/data" etl-app
 
 *Step 6*: Check if the output is exist in csv format after running the app / file explorer
+
 Go to <your_folder_path>/etl-sales-data/etlapp/data/output
 
 
