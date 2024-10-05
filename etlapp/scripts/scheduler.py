@@ -44,7 +44,7 @@ def job():
         logging.error(f"ETL job failed: {e}")
 
 # Schedule the ETL to run every day at a specified time
-schedule.every().day.at("22:43").do(job)
+schedule.every().day.at("00:15").do(job)
 
 while True:
     schedule.run_pending()
