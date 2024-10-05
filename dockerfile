@@ -18,4 +18,4 @@ COPY . .
 ENV DATA_DIR=/data
 
 # Command to run the script
-CMD ["python", "scripts/ETL.py"]
+CMD ["python", "etlapp/scripts/ETL.py"]
