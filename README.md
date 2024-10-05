@@ -1,5 +1,18 @@
 # ETL Project with Scheduler and Docker
 # candidate : Nabila Edelliana Khairunnisa
+*Table of content*
+- Overview
+- Data Sources
+- Output Data
+- ETL Process Explanation
+- Folder Structure
+- Prerequisites
+- Setup tutorial
+- File list
+- Conclusion
+
+
+
 ## Overview
 This project demonstrates an Extract, Transform, Load (ETL) process of sales data using Python, scheduled to run periodically `everyday at 08.00` using a scheduler script, and containerized with Docker for local execution. The ETL process involves extracting data from multiple sources, transforming it, and loading it into a data mart.
 
@@ -27,6 +40,21 @@ List of datamarts :
 3. sales_by_month
 4. sales_by_store
 5. sales_by_store_cashier
+
+## ETL Process Explanation
+### ETL Script (ETL.py)
+The ETL script performs the following tasks:
+
+*Extraction*: Reads data from various sources including CSV, JSON, and Parquet files.
+            (1) For `sales data`, I extract the period info from folder name and file name. I also make it persistent with yyyy, mm, dd formatting.
+            (2) For `cashier data`, actually I have extracted the ID column from the timestamp but when dealing with docker, the etl.py missing the CashierID eventhough if I run it outside docker, it goes well. I guess this error is caused by the folder path difference between local path and docker path.
+            (3) For `store data`, the extraction is quiet simple because it rooted from 1 source excel data.
+*Transformation*: Cleanses and transforms the data into a consistent format.
+                (1) `Cashier data` cleansing consist of missing values handling (column 'name' and 'email') and duplicate data handling. The missing values is filled by considering CashierID, and duplicate data handling is done by retaining the first row with the subset of CashierID column.
+                (2) Data modelling is created by joining 3 table sources.
+                (3) Datamart created from the joined table by adding aggregate columns for each datamart. 
+
+*Loading*: Loads the transformed data into specific folder in csv format.
 
 ## Folder Structure
 .
@@ -114,7 +142,7 @@ List of datamarts :
 Docker
 Docker Compose
 
-## Setup
+## Setup tutorial
 ### Step 1: Go to your preferred path to store the app /cmd
 cd <your_folder_path>
 
@@ -134,16 +162,10 @@ docker run -d -v "%cd%/data:/data" etl-app
 Go to <your_folder_path>/etl-sales-data/etlapp/data/output
 
 
-## ETL Process
-### ETL Script (ETL.py)
-The ETL script performs the following tasks:
 
-Extraction: Reads data from various sources including CSV, JSON, and Parquet files.
-Transformation: Cleanses and transforms the data into a consistent format.
-Loading: Loads the transformed data into the data mart.
-
+## File list
 ### Scheduler Script (scheduler.py)
-The scheduler script ensures the ETL process runs periodically. It uses the schedule library to set up regular intervals for the ETL job.
+The scheduler script ensures the ETL process runs periodically everyday at 08.00 (timezone : Asia, Jakarta). It uses the schedule library for the ETL job.
 
 ### Dockerfile
 The Dockerfile sets up the environment for running the ETL process. It installs necessary dependencies and copies the scripts into the Docker image.
