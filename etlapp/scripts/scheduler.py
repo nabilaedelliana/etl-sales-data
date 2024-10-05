@@ -44,7 +44,7 @@ def job():
         logging.error(f"Error running ETL job: {e}")
 
 # Scheduler untuk menjalankan ETL setiap hari
-schedule.every().day.at("00:38").do(job)
+schedule.every().day.at("00:57").do(job)
 
 while True:
     schedule.run_pending()
